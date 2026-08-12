@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Purifika | Painel Financeiro</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💧</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <svg class="brand-drop" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 3C20 3 8 18.5 8 26.5C8 33.4 13.4 39 20 39C26.6 39 32 33.4 32 26.5C32 18.5 20 3 20 3Z" fill="url(#dropGrad)"/>
+        <defs>
+          <linearGradient id="dropGrad" x1="8" y1="3" x2="32" y2="39" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#3FD4FF"/>
+            <stop offset="1" stop-color="#B4FF39"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      <div class="brand-text">
+        <span class="brand-name">Purifika</span>
+        <span class="brand-sub">Painel financeiro</span>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <button class="nav-item is-active" data-view="dashboard">
+        <span class="nav-icon">◈</span> Painel
+      </button>
+      <button class="nav-item" data-view="novo">
+        <span class="nav-icon">+</span> Novo serviço
+      </button>
+      <button class="nav-item" data-view="historico">
+        <span class="nav-icon">≡</span> Histórico
+      </button>
+      <button class="nav-item" data-view="analise">
+        <span class="nav-icon">◫</span> Análise mensal
+      </button>
+      <button class="nav-item" data-view="config">
+        <span class="nav-icon">⚙</span> Configurações
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <p>Goiânia e região</p>
+      <p class="muted-small">Seus dados ficam salvos neste navegador.</p>
+    </div>
+  </aside>
+
+  <header class="topbar">
+    <svg class="brand-drop-sm" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 3C20 3 8 18.5 8 26.5C8 33.4 13.4 39 20 39C26.6 39 32 33.4 32 26.5C32 18.5 20 3 20 3Z" fill="url(#dropGrad2)"/>
+      <defs>
+        <linearGradient id="dropGrad2" x1="8" y1="3" x2="32" y2="39" gradientUnits="userSpaceOnUse">
+          <stop stop-color="#3FD4FF"/>
+          <stop offset="1" stop-color="#B4FF39"/>
+        </linearGradient>
+      </defs>
+    </svg>
+    <span class="topbar-title">Purifika</span>
+    <button class="topbar-add" data-view="novo">+ Serviço</button>
+  </header>
+
+  <main class="content">
+
+    <section class="view is-active" id="view-dashboard">
+      <div class="view-head">
+        <div>
+          <h1>Painel do mês</h1>
+          <p class="view-sub" id="dash-month-label">—</p>
+        </div>
+        <button class="btn-primary" data-view="novo">+ Novo serviço</button>
+      </div>
+
+      <div class="dash-grid">
+
+        <div class="goal-card">
+          <div class="drop-gauge">
+            <svg viewBox="0 0 120 150" width="120" height="150">
+              <defs>
+                <clipPath id="dropClip">
+                  <path d="M60 6C60 6 14 62 14 96C14 122.5 34.5 144 60 144C85.5 144 106 122.5 106 96C106 62 60 6 60 6Z"/>
+                </clipPath>
+                <linearGradient id="fillGrad" x1="0" y1="1" x2="0" y2="0">
+                  <stop offset="0" stop-color="#3FD4FF"/>
+                  <stop offset="1" stop-color="#B4FF39"/>
+                </linearGradient>
+              </defs>
+              <path d="M60 6C60 6 14 62 14 96C14 122.5 34.5 144 60 144C85.5 144 106 122.5 106 96C106 62 60 6 60 6Z" fill="none" stroke="#1b3562" stroke-width="2"/>
+              <g clip-path="url(#dropClip)">
+                <rect id="gauge-fill" x="14" y="144" width="92" height="0" fill="url(#fillGrad)"/>
+              </g>
+            </svg>
+          </div>
+          <div class="goal-info">
+            <p class="goal-label">Meta do mês</p>
+            <p class="goal-value" id="goal-percent">0%</p>
+            <p class="goal-detail" id="goal-detail">R$ 0 de R$ 0</p>
+          </div>
+        </div>
+
+        <div class="stat-cards">
+          <div class="stat-card">
+            <p class="stat-label">Faturamento</p>
+            <p class="stat-value" id="stat-receita">R$ 0</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Despesas</p>
+            <p class="stat-value stat-neg" id="stat-despesa">R$ 0</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Lucro líquido</p>
+            <p class="stat-value stat-pos" id="stat-lucro">R$ 0</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Ticket médio</p>
+            <p class="stat-value" id="stat-ticket">R$ 0</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Serviços no mês</p>
+            <p class="stat-value" id="stat-qtd">0</p>
+          </div>
+          <div class="stat-card">
+            <p class="stat-label">Km rodados</p>
+            <p class="stat-value" id="stat-km">0 km</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="recent-block">
+        <h2>Últimos serviços</h2>
+        <div class="recent-list" id="recent-list"></div>
+      </div>
+    </section>
+
+    <section class="view" id="view-novo">
+      <div class="view-head">
+        <div>
+          <h1>Novo serviço</h1>
+          <p class="view-sub">Preencha e o Purifika calcula o resto sozinho.</p>
+        </div>
+      </div>
+
+      <form class="form-card" id="service-form">
+        <div class="field">
+          <label for="f-tipo">Tipo de serviço</label>
+          <select id="f-tipo"></select>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-cliente">Cliente</label>
+            <input type="text" id="f-cliente" placeholder="Nome do cliente">
+          </div>
+          <div class="field">
+            <label for="f-data">Data</label>
+            <input type="date" id="f-data">
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-valor">Valor cobrado (R$)</label>
+            <input type="number" id="f-valor" step="0.01" min="0" required>
+          </div>
+          <div class="field">
+            <label for="f-km">Distância até o cliente (km, ida e volta)</label>
+            <input type="number" id="f-km" step="0.1" min="0" value="0">
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="f-produto">Custo de produto químico (R$)</label>
+            <input type="number" id="f-produto" step="0.01" min="0" value="0">
+          </div>
+          <div class="field">
+            <label for="f-desgaste">Desgaste de equipamento (R$)</label>
+            <input type="number" id="f-desgaste" step="0.01" min="0" value="7">
+          </div>
+        </div>
+
+        <div class="calc-preview" id="calc-preview">
+          <div class="calc-row"><span>Combustível estimado</span><span id="calc-gas">R$ 0,00</span></div>
+          <div class="calc-row"><span>Custos totais</span><span id="calc-custos">R$ 0,00</span></div>
+          <div class="calc-row calc-total"><span>Lucro bruto do serviço</span><span id="calc-lucro">R$ 0,00</span></div>
+        </div>
+
+        <div class="field">
+          <label for="f-despesa-extra">Registrar também uma despesa avulsa (opcional)</label>
+          <div class="field-row">
+            <input type="text" id="f-despesa-desc" placeholder="Descrição (ex: comprei pulverizador)">
+            <input type="number" id="f-despesa-valor" step="0.01" min="0" placeholder="R$ 0,00" style="max-width:160px">
+          </div>
+          <button type="button" class="btn-secondary" id="btn-add-despesa">Adicionar despesa avulsa</button>
+        </div>
+
+        <button type="submit" class="btn-primary btn-full">Salvar serviço</button>
+      </form>
+    </section>
+
+    <section class="view" id="view-historico">
+      <div class="view-head">
+        <div>
+          <h1>Histórico</h1>
+          <p class="view-sub">Todos os lançamentos, do mais recente ao mais antigo.</p>
+        </div>
+        <select id="hist-filter">
+          <option value="todos">Todos os meses</option>
+        </select>
+      </div>
+      <div class="table-wrap">
+        <table class="hist-table">
+          <thead>
+            <tr>
+              <th>Data</th><th>Tipo</th><th>Descrição</th><th>Km</th><th>Valor</th><th></th>
+            </tr>
+          </thead>
+          <tbody id="hist-body"></tbody>
+        </table>
+        <p class="empty-state" id="hist-empty">Nenhum lançamento ainda. Vá em "Novo serviço" para começar.</p>
+      </div>
+    </section>
+
+    <section class="view" id="view-analise">
+      <div class="view-head">
+        <div>
+          <h1>Análise mensal</h1>
+          <p class="view-sub">Quanto entrou, quanto saiu e o que sobrou, mês a mês.</p>
+        </div>
+      </div>
+      <div class="chart-card">
+        <div class="chart-bars" id="monthly-chart"></div>
+        <div class="chart-legend">
+          <span><i class="dot dot-receita"></i> Faturamento</span>
+          <span><i class="dot dot-despesa"></i> Despesas</span>
+          <span><i class="dot dot-lucro"></i> Lucro líquido</span>
+        </div>
+      </div>
+      <div class="breakdown-card">
+        <h2>Detalhamento por categoria de despesa</h2>
+        <div id="expense-breakdown"></div>
+      </div>
+    </section>
+
+    <section class="view" id="view-config">
+      <div class="view-head">
+        <div>
+          <h1>Configurações</h1>
+          <p class="view-sub">Ajuste os números que o Purifika usa nos cálculos automáticos.</p>
+        </div>
+      </div>
+      <div class="form-card">
+        <div class="field-row">
+          <div class="field">
+            <label for="c-consumo">Consumo do veículo (km por litro)</label>
+            <input type="number" id="c-consumo" step="0.1" min="1">
+          </div>
+          <div class="field">
+            <label for="c-gasolina">Preço da gasolina (R$/litro)</label>
+            <input type="number" id="c-gasolina" step="0.01" min="0">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="c-imposto">Alíquota de imposto estimada (%)</label>
+            <input type="number" id="c-imposto" step="0.1" min="0">
+          </div>
+          <div class="field">
+            <label for="c-meta">Meta de lucro líquido mensal (R$)</label>
+            <input type="number" id="c-meta" step="10" min="0">
+          </div>
+        </div>
+        <h2 class="config-sub">Tabela de preços</h2>
+        <div class="price-table" id="price-table"></div>
+        <button class="btn-primary" id="btn-save-config">Salvar configurações</button>
+      </div>
+
+      <div class="form-card danger-zone">
+        <h2 class="config-sub">Zona de risco</h2>
+        <p class="muted-small">Isso apaga permanentemente todo o histórico salvo neste navegador.</p>
+        <button class="btn-danger" id="btn-clear-data">Apagar todos os dados</button>
+      </div>
+    </section>
+
+  </main>
+
+  <nav class="mobile-nav">
+    <button class="mnav-item is-active" data-view="dashboard"><span>◈</span>Painel</button>
+    <button class="mnav-item" data-view="historico"><span>≡</span>Histórico</button>
+    <button class="mnav-item" data-view="analise"><span>◫</span>Análise</button>
+    <button class="mnav-item" data-view="config"><span>⚙</span>Config</button>
+  </nav>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
